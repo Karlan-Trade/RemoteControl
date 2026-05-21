@@ -27,12 +27,12 @@ RemoteControl/
 ## 编译方法
 
 1. 使用 Visual Studio 2022 打开 `RemoteControl.slnx`
-2. 选择 `x64 | Debug` 配置
+2. 选择 `x64 | Release` 配置
 3. 生成解决方案（Ctrl+Shift+B）
 
 > 工具集要求：v143+，Windows SDK 10.0+
 
-## 使用方法
+## 使用方法（RemoteControl\RemoteControl\x64\Release中有完成编译的版本）
 
 ### 1. 配置
 
@@ -57,7 +57,7 @@ Port=23333
 - **传输层**：TCP
 - **应用层协议**：Magic(4B) + Cmd(4B) + BodyLen(4B) + Body(N B)
 - Magic: `0x55AA77CC`
-- 支持命令：屏幕截图、鼠标操作、键盘操作、连接测试
+- 支持命令：屏幕截图、鼠标操作、键盘操作
 
 ## 公网远程
 
@@ -65,7 +65,7 @@ Port=23333
 
 ## 开发环境
 
-- Visual Studio 2022 (v143)
+- Visual Studio 2026
 - Windows SDK 10.0
 - C++20
 

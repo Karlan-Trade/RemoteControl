@@ -26,7 +26,7 @@ RemoteControl/
 
 ## 编译方法
 
-1. 使用 Visual Studio 2022 打开 `RemoteControl.slnx`
+1. 使用 Visual Studio 打开 `RemoteControl.slnx`
 2. 选择 `x64 | Release` 配置
 3. 生成解决方案（Ctrl+Shift+B）
 

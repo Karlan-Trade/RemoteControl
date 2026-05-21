@@ -1,0 +1,37 @@
+# Visual Studio
+.vs/
+*.sln.docstates
+*.user
+*.suo
+*.cache
+*.log
+*.tlog
+*.obj
+*.idb
+*.pdb
+*.ilk
+*.ipdb
+*.iobj
+*.res
+*.metagen
+*.rsvars
+*.recipes
+*.recipe
+*.opensdf
+*.sdf
+
+# Build output
+Debug/
+Release/
+x64/
+Win32/
+*.exe
+*.lib
+*.dll
+
+# Project-specific
+RemoteControl/x64/
+Client/Client/x64/
+*.user
+config.ini
+/config.ini

@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Client/Client/Client.vcxproj" Id="ec0b0511-974f-49c3-9c46-8d16fe0adea6" />
+  <Project Path="Common/Common.vcxproj" Id="ddde4f5c-c9ab-4156-bb5a-8ce8813e4b32" />
+  <Project Path="RemoteControl/RemoteControl.vcxproj" Id="63962572-cedd-4ec1-8f55-52a0049c010c" />
+</Solution>

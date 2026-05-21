@@ -32,10 +32,10 @@ RemoteControl/
 
 > 工具集要求：v143+，Windows SDK 10.0+
 
-## 使用方法（RemoteControl\RemoteControl\x64\Release中有完成编译的版本）
+## 使用方法
 
 ### 1. 配置
-
+下载Release并解压，
 在 `config.ini` 中填写被控端的 IP 和端口（配置文件需放在 exe 同级目录）：
 
 ```ini

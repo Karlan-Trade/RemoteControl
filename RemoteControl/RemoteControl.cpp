@@ -7,11 +7,7 @@
 #include <ShellScalingAPI.h>
 #include "Packet.h"
 #include "Config.h"
-<<<<<<< HEAD
 #define BUFFER_SIZE 1024*1024*10
-=======
-#define BUFFER_SIZE 1024*1024*1
->>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
 
 #pragma comment(lib, "ws2_32.lib")
 int InitServer();

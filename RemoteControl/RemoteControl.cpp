@@ -186,7 +186,7 @@ int HandleScreenShot(Packet* packet){
     IStream* pStream = nullptr;
     HRESULT ret = CreateStreamOnHGlobal(hMen, TRUE, &pStream);//创建一个流对象
     if (ret == S_OK){
-        img.Save(pStream, Gdiplus::ImageFormatPNG); //将图像保存到流对象中
+        img.Save(pStream, Gdiplus::ImageFormatJPEG); //将图像保存到流对象中
         //将p指针放到开头
         LARGE_INTEGER lg = { 0 };
         pStream->Seek(lg, STREAM_SEEK_SET, nullptr);

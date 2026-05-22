@@ -35,13 +35,16 @@ RemoteControl/
 ## 使用方法
 
 ### 1. 配置
-下载Release并解压，
-在 `config.ini` 中填写被控端的 IP 和端口（配置文件需放在 exe 同级目录）：
+下载Release并解压，打开同级的`config.ini` （配置文件需放在 exe 同级目录）：
+配置IP,端口，显示窗口。
 
 ```ini
 [Network]
 IP=192.168.32.129
 Port=23333
+[Screen]
+Width=1920
+Height=1080
 ```
 
 ### 2. 启动被控端

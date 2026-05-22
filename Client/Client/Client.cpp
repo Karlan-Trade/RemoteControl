@@ -224,11 +224,7 @@ int InitWindow(HINSTANCE hInstance, int nCmdShow)
         "远程控制",                   // 窗口标题
         WS_OVERLAPPEDWINDOW,          // 窗口样式
         CW_USEDEFAULT, CW_USEDEFAULT, // 窗口坐标x,y位置
-<<<<<<< HEAD
         ReadConfigScreenWidth(800), ReadConfigScreenHeight(600),                     // 窗口宽高
-=======
-        600, 400,                     // 窗口宽高
->>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
         NULL,                         // 父窗口句柄
         NULL,                         // 菜单句柄
         hInstance,                    // 实例句柄
@@ -277,15 +273,10 @@ void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd)
     {
         int rxPos = xPos * g_remote_width / client_width;
         int ryPos = yPos * g_remote_height / client_height;
-<<<<<<< HEAD
-=======
-        // 发送鼠标移动命令
->>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
         Mouse mouse;
         mouse.action = cmd;
         mouse.ptXY.x = rxPos;
         mouse.ptXY.y = ryPos;
-<<<<<<< HEAD
         //if (cmd == MOUSE_MOVE)
         //{
             //ULONGLONG now = GetTickCount64();
@@ -293,15 +284,6 @@ void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd)
                 //return;
             //last_move_tick = now;
         //}
-=======
-        if (cmd == MOUSE_MOVE)
-        {
-            ULONGLONG now = GetTickCount64();
-            if (now - last_move_tick < 100)
-                return;
-            last_move_tick = now;
-        }
->>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
         Packet *packet = PackPacket((char *)&mouse, sizeof(Mouse), CMD::CMD_MOUSE);
         send(g_server_socket, (char *)packet, GetPacketLen(packet), 0);
         free(packet);

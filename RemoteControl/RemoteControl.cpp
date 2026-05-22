@@ -7,7 +7,11 @@
 #include <ShellScalingAPI.h>
 #include "Packet.h"
 #include "Config.h"
+<<<<<<< HEAD
 #define BUFFER_SIZE 1024*1024*10
+=======
+#define BUFFER_SIZE 1024*1024*1
+>>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
 
 #pragma comment(lib, "ws2_32.lib")
 int InitServer();
@@ -19,6 +23,7 @@ int HandleConnection(Packet* packet);
 SOCKET g_server_socket = INVALID_SOCKET;
 SOCKET g_client_socket = INVALID_SOCKET;
 SOCKADDR_IN ser_addr;
+<<<<<<< HEAD
 unsigned long screen_thread_id = 0;
 unsigned long mouse_thread_id = 0;
 unsigned long keyboard_thread_id = 0;
@@ -61,11 +66,14 @@ DWORD WINAPI HandleKeyboardThread(LPVOID lpParameter){
     }
     return 0;
 }
+=======
+>>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
 int main(){
     if (InitServer()!=0) {
         std::cout<<"启动服务失败"<<std::endl;
         return 0;
     }
+<<<<<<< HEAD
 	//为每个命令单独创建新线程处理，避免命令处理时间过长导致接收数据阻塞
     CreateThread(nullptr, 0, HandleScreenThread, nullptr, 0, &screen_thread_id);
 	CreateThread(nullptr, 0, HandleMouseThread, nullptr, 0, &mouse_thread_id);
@@ -74,6 +82,8 @@ int main(){
 	PostThreadMessage(screen_thread_id, WM_START_THREAD, 0, 0);
 	PostThreadMessage(mouse_thread_id, WM_START_THREAD, 0, 0);
 	PostThreadMessage(keyboard_thread_id, WM_START_THREAD, 0 , 0);
+=======
+>>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
     //客户端连接
     SOCKADDR_IN client_addr;
     int client_addr_len = sizeof(client_addr);
@@ -149,6 +159,7 @@ int HandleCommand(Packet* packet) {
     int ret = 0;
     switch (packet->header.cmd) {
     case CMD::CMD_SCREEN_SHOT:
+<<<<<<< HEAD
 		PostThreadMessage(screen_thread_id, WM_HANDLE_SCREEN, 0, (LPARAM)packet);
         //处理屏幕截图命令
         break;
@@ -158,6 +169,17 @@ int HandleCommand(Packet* packet) {
         break;
     case CMD::CMD_KEYBOARD:
 		PostThreadMessage(keyboard_thread_id, WM_HANDLE_KEYBOARD, 0, (LPARAM)packet);
+=======
+        ret = HandleScreenShot(packet);
+        //处理屏幕截图命令
+        break;
+    case CMD::CMD_MOUSE:
+		ret = HandleMouse(packet);
+        //处理鼠标命令
+        break;
+    case CMD::CMD_KEYBOARD:
+        ret = HandleKeyboard(packet);
+>>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578
         //处理键盘命令
         break;
     case CMD::CMD_CONNECTION:

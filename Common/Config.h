@@ -5,5 +5,8 @@
 void GetConfigPath(char* config_path, int size);
 void ReadConfigIP(char* ip, int size, const char* default_ip);
 int ReadConfigPort(int default_port);
+<<<<<<< HEAD
 int ReadConfigScreenWidth(int default_width);
 int ReadConfigScreenHeight(int default_height);
+=======
+>>>>>>> 27f33bc5ab031db329aa01522201768b7cbd9578

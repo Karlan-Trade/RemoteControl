@@ -18,7 +18,7 @@ HWND g_hwnd = NULL;
 CImage g_img;
 int g_remote_width = -1, g_remote_height = -1;
 CRITICAL_SECTION g_cri_sec;
-void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd);
+void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd, int wheel_delta = 0);
 DWORD WINAPI SendScreenCallBack(LPVOID lpThreadParameter)
 {
     char *recv_buffer = (char *)malloc(BUFFER_SIZE);
@@ -143,6 +143,15 @@ LRESULT CALLBACK winProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         Mouse_Action(wParam, lParam, hwnd, MOUSE_R_DCLICK);
         break;
     }
+    case WM_MOUSEWHEEL:
+    {
+        POINT pt;
+        pt.x = LOWORD(lParam);
+        pt.y = HIWORD(lParam);
+        ScreenToClient(hwnd, &pt);
+        Mouse_Action(wParam, MAKELPARAM(pt.x, pt.y), hwnd, MOUSE_WHEEL, GET_WHEEL_DELTA_WPARAM(wParam));
+        break;
+    }
     case WM_KEYDOWN:
     case WM_SYSKEYDOWN:
     {
@@ -260,7 +269,7 @@ int InitSocket()
     g_server_addr.sin_addr.S_un.S_addr = inet_addr(ip);
     return 0;
 }
-void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd)
+void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd, int wheel_delta)
 {
     static ULONGLONG last_move_tick = 0;
     int xPos = LOWORD(lParam); // 获取鼠标x坐标
@@ -277,6 +286,7 @@ void Mouse_Action(WPARAM wParam, LPARAM lParam, HWND hwnd, int cmd)
         mouse.action = cmd;
         mouse.ptXY.x = rxPos;
         mouse.ptXY.y = ryPos;
+		mouse.wheel_delta = wheel_delta;
         //if (cmd == MOUSE_MOVE)
         //{
             //ULONGLONG now = GetTickCount64();

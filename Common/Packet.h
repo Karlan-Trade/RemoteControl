@@ -17,6 +17,7 @@ typedef struct {
 typedef struct{
     int action;
     POINT ptXY;
+	int wheel_delta;
 }Mouse;
 typedef struct{
     int virtual_code;
@@ -42,6 +43,7 @@ enum MOUSE_ACTION{
     MOUSE_L_DCLICK = 11,
     MOUSE_R_DCLICK = 12,
     MOUSE_M_DCLICK = 13,
+	MOUSE_WHEEL = 14,
 };
 int GetPacketLen(Packet* pck);
 Packet* ParsePacket(char* buffer, int len);

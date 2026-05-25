@@ -256,6 +256,9 @@ int HandleMouse(Packet* packet){
 		mouse_event(MOUSEEVENTF_MIDDLEDOWN | MOUSEEVENTF_MIDDLEUP, 0, 0, 0, GetMessageExtraInfo());
         mouse_event(MOUSEEVENTF_MIDDLEDOWN | MOUSEEVENTF_MIDDLEUP, 0, 0, 0, GetMessageExtraInfo());
 		break;
+	case MOUSE_WHEEL:
+		mouse_event(MOUSEEVENTF_WHEEL, 0, 0, mouse.wheel_delta, GetMessageExtraInfo());
+		break;
     default:
         break;
     }
